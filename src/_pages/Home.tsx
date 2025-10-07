@@ -15,7 +15,7 @@ export function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  //const [error, setError] = useState<string | null>(null);
 
   const filters: FiltersValues = {
     name: searchParams.get("name") || "",

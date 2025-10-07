@@ -20,7 +20,10 @@ export const InputField = ({
   multiple,
 }: InputFieldProps) => (
   <div className="flex flex-col">
-    <label className="text-sm font-semibold text-gray-700 mb-1.5">
+    <label
+      className="text-sm font-semibold text-gray-700 mb-1.5"
+      data-name={name}
+    >
       {label}
       <span className="text-red-500 ml-1">*</span>
     </label>

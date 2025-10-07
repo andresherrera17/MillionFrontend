@@ -2,11 +2,12 @@ import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { useForm, type Resolver } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { InputField } from "../../_ui/input";
 import {
   propertySchema,
   type PropertyFormData,
-} from "../../_models/propertySchema";
-import { InputField } from "../../_ui/input";
+} from "../../_models/PropertySchema";
 
 export function PropertyAddModal({
   isOpen,
