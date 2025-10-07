@@ -1,38 +1,44 @@
-.App {
-  text-align: center;
+:root {
+  --primary-color: #c0a063;
+  --background-light: #f5f5f5;
+  --background-dark: #121212;
+  --card-light: #ffffff;
+  --card-dark: #1e1e1e;
+  --text-light: #1a1a1a;
+  --text-dark: #e0e0e0;
+  --text-muted-light: #6b7280;
+  --text-muted-dark: #9ca3af;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.font-display {
+  font-family: "Manrope", "Noto Sans", sans-serif;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.font-body {
+  font-family: "Roboto", sans-serif;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.bg-primary {
+  background-color: var(--primary-color);
 }
-
-.App-link {
-  color: #61dafb;
+.bg-background-light {
+  background-color: var(--background-light);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dark .bg-background-dark {
+  background-color: var(--background-dark);
+}
+.bg-card-light {
+  background-color: var(--card-light);
+}
+.dark .bg-card-dark {
+  background-color: var(--card-dark);
+}
+.text-text-light {
+  color: var(--text-light);
+}
+.dark .text-text-dark {
+  color: var(--text-dark);
+}
+.text-text-muted-light {
+  color: var(--text-muted-light);
+}
+.dark .text-text-muted-dark {
+  color: var(--text-muted-dark);
 }
