@@ -19,7 +19,7 @@ Antes de comenzar, asegúrate de tener instalado:
 1. Clona el repositorio:
 
 ```bash
-git clone https://github.com/tu-usuario/frontend-million.git
+git clone https://github.com/andresherrera17/MillionFrontend.git
 cd frontend-million
 ```
 
