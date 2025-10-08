@@ -29,11 +29,19 @@ export function Home() {
   useEffect(() => {
     setLoading(true);
     const queryParams = new URLSearchParams(searchParams);
-    getProperties(queryParams).then((res) => {
-      setProperties(res.items);
-      setTotal(res.total);
-      setLoading(false);
-    });
+    getProperties(queryParams)
+      .then((res) => {
+        setProperties(res.items);
+        setTotal(res.total);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [searchParams]);
 
   const handleSearch = (newFilterss: FiltersValues) => {
@@ -53,7 +61,7 @@ export function Home() {
           </p>
         </div>
         <Filters onSearch={handleSearch} initialValues={filters} />
-        {properties && !loading ? (
+        {properties.length > 0 && !loading ? (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {properties.map((property) => (
@@ -69,9 +77,11 @@ export function Home() {
             </div>
             <Pagination page={page} total={total} pageSize={pageSize} />
           </>
-        ) : (
-          <div>No properties available.</div>
-        )}
+        ) : !loading ? (
+          <div className="text-center py-12 text-text-muted-light dark:text-text-muted-dark">
+            No properties available.
+          </div>
+        ) : null}
       </div>
       <Loader loading={loading} />
     </main>

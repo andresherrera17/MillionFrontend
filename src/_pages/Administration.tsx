@@ -76,6 +76,13 @@ export function Administration() {
     try {
       await addProperty(formData);
       alert("Property added successfully");
+      const queryParams = new URLSearchParams(searchParams);
+      setLoading(true);
+      getProperties(queryParams).then((res) => {
+        setProperties(res.items);
+        setTotal(res.total);
+        setLoading(false);
+      });
     } catch (error) {
       alert("Error adding property");
       console.error("Error adding property:", error);
@@ -123,16 +130,25 @@ export function Administration() {
           Properties
         </h2>
         <Filters onSearch={handleSearch} initialValues={filters} />
-        {properties.map((property) => (
-          <PropertiesTable
-            key={property.idProperty}
-            property={property}
-            setOpen={setIsOpenTrace}
-          />
-        ))}
+
+        {properties.length > 0 && !loading ? (
+          <>
+            {properties.map((property) => (
+              <PropertiesTable
+                key={property.idProperty}
+                property={property}
+                setOpen={setIsOpenTrace}
+              />
+            ))}
+            <Pagination page={page} total={total} pageSize={pageSize} />
+          </>
+        ) : !loading ? (
+          <div className="text-center py-12 text-text-muted-light dark:text-text-muted-dark">
+            No properties available.
+          </div>
+        ) : null}
+        <Loader loading={loading} />
       </div>
-      <Pagination page={page} total={total} pageSize={pageSize} />
-      <Loader loading={loading} />
     </div>
   );
 }
